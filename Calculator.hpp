@@ -1,9 +1,9 @@
-
+#pragma once
 
 class Calculator {
-    
-public:
 
+public:
+    int aaa(int a);
 
 private:
 };
