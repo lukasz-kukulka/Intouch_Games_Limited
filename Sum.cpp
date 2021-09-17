@@ -33,13 +33,15 @@ void Sum::checkDelimiter(std::string userInput) {
 
 void Sum::generateData() {
     std::string number { };
-    size_t startPoint { 0 };
+    size_t delimeterSize { 0 };
     if (changeDelimeter == true) {
-        startPoint = 2;
+        for (const auto & count : delimiters_) {
+            delimeterSize += count.size();
+        }
     }
-    for(size_t i = startPoint ; i < userInput_.size(); i++) {
+    for(size_t i = delimeterSize ; i < userInput_.size(); i++) {
         if(userInput_[i] == delimiter_[0]) {
-            i += delimiter_.size();
+            i += delimeterSize;
             dataToCount_.push_back(std::to_string(userInput_[i]));
         } else {
             dataToCount_[dataToCount_.size() - 1] += std::to_string(userInput_[i]);
