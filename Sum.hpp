@@ -19,6 +19,7 @@ public:
 private:
     std::string userInput_;
     int result_ { 0 };
-    std::string delimiter_ { "," };
+    std::vector<std::string> delimiter_ { "," };
     std::vector<std::string>dataToCount_{ };
+    bool changeDelimeter { false };
 };

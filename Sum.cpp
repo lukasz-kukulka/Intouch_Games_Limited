@@ -28,7 +28,9 @@ void Sum::checkDelimiter(std::string userInput) {
 
 void Sum::generateData() {
     std::string number { };
-    for(size_t i = 2; i < userInput_.size(); i++) {
+    size_t startPoint { };
+    if (changeDelimeter == true)
+    for(size_t i = startPoint ; i < userInput_.size(); i++) {
         if(userInput_[i] == delimiter_[0]) {
             i += delimiter_.size();
             dataToCount_.push_back(std::to_string(userInput_[i]));
