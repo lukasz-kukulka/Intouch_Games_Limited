@@ -15,7 +15,7 @@ Sum::~Sum() {}
 
 void Sum::validationData() {
      // to do
- }
+}
 
 void Sum::checkDelimiter(std::string userInput) {
     if (userInput[0] && userInput[1] == '/') {
