@@ -21,15 +21,22 @@ void Sum::checkDelimiter(std::string userInput) {
     if (userInput[0] && userInput[1] == '/') {
         delimiter_ = userInput_[2];
         for (int i = 3; !std::isdigit(userInput_[i]); i++) {
+            if (i > 3 && userInput_[i] != userInput_[i - 1]) {
+                delimiters_.push_back(delimiter_);
+                delimiter_ = "";
+            }
             delimiter_ += userInput_[i];
+            changeDelimeter = true;
         }
     }
 }
 
 void Sum::generateData() {
     std::string number { };
-    size_t startPoint { };
-    if (changeDelimeter == true)
+    size_t startPoint { 0 };
+    if (changeDelimeter == true) {
+        startPoint = 2;
+    }
     for(size_t i = startPoint ; i < userInput_.size(); i++) {
         if(userInput_[i] == delimiter_[0]) {
             i += delimiter_.size();
