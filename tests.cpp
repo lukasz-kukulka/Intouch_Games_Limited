@@ -1,18 +1,19 @@
 #include "catch_amalgamated.hpp"
+#include "Calculator.hpp"
 
 #include <algorithm>
 #include <vector>
 
-// SCENARIO("Check sum") {
-//     GIVEN("function") {
-//         Calculator calc;
+SCENARIO("Check sum") {
+    GIVEN("function") {
+        Calculator calc;
 
-//         WHEN("4") {
-//             auto result = calc.aaa(4);
+        WHEN("Give data without delimeter") {
+            auto result = calc.Add("4,4");
 
-//             THEN("check single value in vector") {
-//                 REQUIRE(result == 4);
-//             }
-//         }
-//     }
-// }
+            THEN("Add numbers") {
+                REQUIRE(result == 8);
+            }
+        }
+    }
+}

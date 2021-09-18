@@ -11,8 +11,9 @@ public:
     ~Sum() override;
     int getResult() const override { return result_; }
     void validationData(); 
-    void checkDelimiter(std::string userInput); 
-    void generateData();
+    bool isDelimiter(std::string userInput);
+    void generateDelimiter(std::string userInput); 
+    void generateData(std::string userInput);
     void couting();
     void checkIfMoreThan1000(std::vector<int>& checkData);
     
@@ -22,5 +23,4 @@ private:
     std::string delimiter_ { "," };
     std::vector<std::string>delimiters_;
     std::vector<std::string>dataToCount_{ };
-    bool changeDelimeter { false };
 };

@@ -11,6 +11,7 @@ add_executable(${PROJECT_NAME} main.cpp)
 add_executable(${PROJECT_NAME}-ut catch_amalgamated.cpp tests.cpp catch_main.cpp)
 
 target_link_libraries(${PROJECT_NAME} ${PROJECT_NAME}-lib)
+target_link_libraries(${PROJECT_NAME}-ut ${PROJECT_NAME}-lib)
 target_compile_options(${PROJECT_NAME}-lib PRIVATE -Wall -Wextra -Werror -pedantic -Wconversion)
 target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -Werror -pedantic -Wconversion)
 

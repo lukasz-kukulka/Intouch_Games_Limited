@@ -23,12 +23,13 @@ int Calculator::Add(std::string userInput) {
 }
 
 std::string Calculator::userInput() {
-    std::string userInput;
-    std::cin >> userInput;
-    return userInput;
+    std::string firstLine;
+    std::cin >> firstLine;
+    std::string secondLine;
+    std::cin >> secondLine;
+    return firstLine + "\n" + secondLine;
 }
 
 int Calculator::countResult() {
-
     return operation_->getResult();
 }

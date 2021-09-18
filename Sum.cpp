@@ -2,13 +2,15 @@
 
 #include "algorithm"
 #include <cctype>
+#include <iostream>
 #include <iterator>
 #include <numeric>
 
 Sum::Sum(std::string userInput) 
     : userInput_(userInput)
 {
-    checkDelimiter(userInput_);
+    generateData(userInput_);
+    couting();
 }
 
 Sum::~Sum() {}
@@ -17,36 +19,21 @@ void Sum::validationData() {
      // to do
 }
 
-void Sum::checkDelimiter(std::string userInput) {
-    if (userInput[0] && userInput[1] == '/') {
-        delimiter_ = userInput_[2];
-        for (int i = 3; !std::isdigit(userInput_[i]); i++) {
-            if (i > 3 && userInput_[i] != userInput_[i - 1]) {
-                delimiters_.push_back(delimiter_);
-                delimiter_ = "";
-            }
-            delimiter_ += userInput_[i];
-            changeDelimeter = true;
-        }
+bool Sum::isDelimiter(std::string userInput) {
+    if (userInput.size() > 2 && userInput[0] == '/' && userInput[1] == '/') {
+        return true;
+    }
+    return false;
+}
+
+void Sum::generateDelimiter(std::string userInput) {
+    if (isDelimiter(userInput) == true) {
+
     }
 }
 
-void Sum::generateData() {
-    std::string number { };
-    size_t delimeterSize { 0 };
-    if (changeDelimeter == true) {
-        for (const auto & count : delimiters_) {
-            delimeterSize += count.size();
-        }
-    }
-    for(size_t i = delimeterSize ; i < userInput_.size(); i++) {
-        if(userInput_[i] == delimiter_[0]) {
-            i += delimeterSize;
-            dataToCount_.push_back(std::to_string(userInput_[i]));
-        } else {
-            dataToCount_[dataToCount_.size() - 1] += std::to_string(userInput_[i]);
-        }
-    }
+void Sum::generateData(std::string userInput) {
+
 }
 
 void Sum::couting() {
