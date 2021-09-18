@@ -56,19 +56,24 @@ void Sum::generateMultiDelimiter(std::string delimiter) {
     }
 }
 
+void Sum::generateNumbers(std::string userInput) {
+    
+}
+
 void Sum::generateData(std::string userInput) {
     generateDelimiter(userInput);
-    for (auto xxx : delimiters_) {
-        std::cout << xxx << "\n";
-    }
+
+    // for (auto xxx : delimiters_) {
+    //     std::cout << xxx << "\n";
+    // }
 }
 
 void Sum::couting() {
-    std::vector<int>dataToCount;
-    dataToCount.reserve(dataToCount_.size());
-    std::transform(dataToCount_.begin(), dataToCount_.end(), dataToCount.begin(), [](auto ele){ return std::stoi(ele);} );
-    checkIfMoreThan1000(dataToCount);
-    result_ = std::accumulate(dataToCount.begin(), dataToCount.end(), 0);
+    // std::vector<int>dataToCount;
+    // dataToCount.reserve(dataToCount_.size());
+    // std::transform(dataToCount_.begin(), dataToCount_.end(), dataToCount.begin(), [](auto ele){ return std::stoi(ele);} );
+    // checkIfMoreThan1000(dataToCount);
+    // result_ = std::accumulate(dataToCount.begin(), dataToCount.end(), 0);
 }
 
 void Sum::checkIfMoreThan1000(std::vector<int>& checkData) {

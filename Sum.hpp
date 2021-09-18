@@ -14,6 +14,7 @@ public:
     bool isDelimiter(std::string userInput);
     void generateDelimiter(std::string userInput); 
     void generateMultiDelimiter(std::string delimiter);
+    void generateNumbers(std::string userInput);
     void generateData(std::string userInput);
     void couting();
     void checkIfMoreThan1000(std::vector<int>& checkData);
@@ -23,5 +24,5 @@ private:
     int result_ { 0 };
     std::string delimiter_ { "," };
     std::vector<std::string>delimiters_;
-    std::vector<std::string>dataToCount_{ };
+    std::vector<std::string>numbersToCount_{ };
 };
