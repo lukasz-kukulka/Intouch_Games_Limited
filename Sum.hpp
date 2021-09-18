@@ -26,4 +26,5 @@ private:
     std::vector<std::string>delimiters_;
     std::vector<std::string>numbersToCount_{ };
     std::string::iterator delimiterEndIt_ { };
+    bool isDelimiter_ { false };
 };

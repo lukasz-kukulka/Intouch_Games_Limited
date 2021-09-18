@@ -29,13 +29,13 @@ bool Sum::isDelimiter(std::string userInput) {
 void Sum::generateDelimiter(std::string userInput) {
     delimiterEndIt_ = userInput.begin();
     std::string delimiter { };
-    if (isDelimiter(userInput) == true) {
+    isDelimiter_ = isDelimiter(userInput);
+    if (isDelimiter_ == true) {
         delimiterEndIt_ = std::find_if(userInput.begin(), userInput.end(), [](auto ele){ return ele == '\n'; });
         std::copy_if(userInput.begin() + 2, delimiterEndIt_, std::back_inserter(delimiter), [](auto ele){ return !std::isdigit(ele) && ele != '\n'; });
-    }
-    //std::cout << delimiter << "\n";
-    if (delimiter[0] == '[') {
-        generateMultiDelimiter(delimiter);
+        if (delimiter[0] == '[') {
+            generateMultiDelimiter(delimiter);
+        }
     } else {
         delimiter_ = delimiter;
     }
@@ -58,6 +58,9 @@ void Sum::generateMultiDelimiter(std::string delimiter) {
 }
 
 void Sum::generateNumbers(std::string userInput) {
+    if (isDelimiter_ == false) {
+        numbersToCount_.push_back("");
+    }
     for (auto i = delimiterEndIt_; i < userInput.end(); i++) {
         if (!std::isdigit(*i) && std::isdigit(*(i + 1))) {
             numbersToCount_.push_back("");
@@ -80,11 +83,11 @@ void Sum::generateData(std::string userInput) {
 }
 
 void Sum::couting() {
-    // std::vector<int>dataToCount;
-    // dataToCount.reserve(dataToCount_.size());
-    // std::transform(dataToCount_.begin(), dataToCount_.end(), dataToCount.begin(), [](auto ele){ return std::stoi(ele);} );
-    // checkIfMoreThan1000(dataToCount);
-    // result_ = std::accumulate(dataToCount.begin(), dataToCount.end(), 0);
+    std::vector<int>dataToCount;
+    dataToCount.reserve(numbersToCount_.size());
+    std::transform(numbersToCount_.begin(), numbersToCount_.end(), std::back_inserter(dataToCount), [](auto ele){ return std::stoi(ele);} );
+    checkIfMoreThan1000(dataToCount);
+    result_ = std::accumulate(dataToCount.begin(), dataToCount.end(), 0);
 }
 
 void Sum::checkIfMoreThan1000(std::vector<int>& checkData) {
