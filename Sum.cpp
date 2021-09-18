@@ -27,10 +27,11 @@ bool Sum::isDelimiter(std::string userInput) {
 }
 
 void Sum::generateDelimiter(std::string userInput) {
+    delimiterEndIt_ = userInput.begin();
     std::string delimiter { };
     if (isDelimiter(userInput) == true) {
-        auto delimiterEndIt = std::find_if(userInput.begin(), userInput.end(), [](auto ele){ return ele == '\n'; });
-        std::copy_if(userInput.begin() + 2, delimiterEndIt, std::back_inserter(delimiter), [](auto ele){ return !std::isdigit(ele) && ele != '\n'; });
+        delimiterEndIt_ = std::find_if(userInput.begin(), userInput.end(), [](auto ele){ return ele == '\n'; });
+        std::copy_if(userInput.begin() + 2, delimiterEndIt_, std::back_inserter(delimiter), [](auto ele){ return !std::isdigit(ele) && ele != '\n'; });
     }
     //std::cout << delimiter << "\n";
     if (delimiter[0] == '[') {
@@ -57,12 +58,22 @@ void Sum::generateMultiDelimiter(std::string delimiter) {
 }
 
 void Sum::generateNumbers(std::string userInput) {
-    
+    for (auto i = delimiterEndIt_; i < userInput.end(); i++) {
+        if (!std::isdigit(*i) && std::isdigit(*(i + 1))) {
+            numbersToCount_.push_back("");
+        } else if (std::isdigit(*i)) {
+            numbersToCount_[numbersToCount_.size() - 1] += *i;
+        }
+    }
+
+    // for ( auto ele : numbersToCount_) {
+    //     std::cout << "------- " << ele << "\n";
+    // }
 }
 
 void Sum::generateData(std::string userInput) {
     generateDelimiter(userInput);
-
+    generateNumbers(userInput);
     // for (auto xxx : delimiters_) {
     //     std::cout << xxx << "\n";
     // }
