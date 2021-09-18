@@ -27,13 +27,14 @@ bool Sum::isDelimiter(std::string userInput) {
 }
 
 void Sum::generateDelimiter(std::string userInput) {
+    std::string beforeNumber { };
     if (isDelimiter(userInput) == true) {
-
+        std::copy_if(userInput.begin(), userInput.end(), std::back_inserter(beforeNumber), [](auto ele){ return !std::isdigit(ele); });
     }
 }
 
 void Sum::generateData(std::string userInput) {
-
+    generateDelimiter(userInput);
 }
 
 void Sum::couting() {
