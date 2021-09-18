@@ -13,7 +13,7 @@ public:
     void validationData(); 
     bool isDelimiter(std::string userInput);
     void generateDelimiter(std::string userInput); 
-    void generateMultiDelimiter(std::string userInput);
+    void generateMultiDelimiter(std::string delimiter);
     void generateData(std::string userInput);
     void couting();
     void checkIfMoreThan1000(std::vector<int>& checkData);

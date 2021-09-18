@@ -34,20 +34,33 @@ void Sum::generateDelimiter(std::string userInput) {
     }
     //std::cout << delimiter << "\n";
     if (delimiter[0] == '[') {
-        for (size_t i = 0; i < delimiter.size() - 1; i++) {
-
-        }
+        generateMultiDelimiter(delimiter);
     } else {
         delimiter_ = delimiter;
     }
 }
 
-void Sum::generateMultiDelimiter(std::string userInput) {
-
+void Sum::generateMultiDelimiter(std::string delimiter) {
+    delimiter_ = "";
+    //std::cout << delimiter << "\n";
+    for (size_t i = 0; i < delimiter.size(); i++) {
+        if (delimiter[i] == '[') {
+            i++;
+            delimiter_ += delimiter[i];
+        } else if (delimiter[i] == ']') {
+            delimiters_.push_back(delimiter_);
+            delimiter_ = "";
+        } else {
+            delimiter_ += delimiter[i];
+        }
+    }
 }
 
 void Sum::generateData(std::string userInput) {
     generateDelimiter(userInput);
+    for (auto xxx : delimiters_) {
+        std::cout << xxx << "\n";
+    }
 }
 
 void Sum::couting() {
