@@ -27,10 +27,23 @@ bool Sum::isDelimiter(std::string userInput) {
 }
 
 void Sum::generateDelimiter(std::string userInput) {
-    std::string beforeNumber { };
+    std::string delimiter { };
     if (isDelimiter(userInput) == true) {
-        std::copy_if(userInput.begin(), userInput.end(), std::back_inserter(beforeNumber), [](auto ele){ return !std::isdigit(ele); });
+        auto delimiterEndIt = std::find_if(userInput.begin(), userInput.end(), [](auto ele){ return ele == '\n'; });
+        std::copy_if(userInput.begin() + 2, delimiterEndIt, std::back_inserter(delimiter), [](auto ele){ return !std::isdigit(ele) && ele != '\n'; });
     }
+    //std::cout << delimiter << "\n";
+    if (delimiter[0] == '[') {
+        for (size_t i = 0; i < delimiter.size() - 1; i++) {
+
+        }
+    } else {
+        delimiter_ = delimiter;
+    }
+}
+
+void Sum::generateMultiDelimiter(std::string userInput) {
+
 }
 
 void Sum::generateData(std::string userInput) {
