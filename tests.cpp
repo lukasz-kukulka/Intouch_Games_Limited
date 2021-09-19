@@ -48,34 +48,34 @@ SCENARIO("Check Add function" "[Sum][Add][SingleDelimiter]") {
         Calculator calc;
 
         WHEN("Call function Add with single delimeter with string = 4,4") {
-            auto result = calc.Add("4,4");
+            auto result = calc.Add("//;\n10;10");
         
             THEN("Add numbers") {
-                REQUIRE(result == 8);
+                REQUIRE(result == 20);
             }
         }
 
-        WHEN("Call function Add with single delimeter with string = ") {
-            auto result = calc.Add("22,15,45");
+        WHEN("Call function Add with single delimeter with string = //:::\n33:::33") {
+            auto result = calc.Add("//:::\n33:::33");
         
             THEN("Add numbers") {
-                REQUIRE(result == 82);
+                REQUIRE(result == 66);
             }
         }
 
-        WHEN("Call function Add with single delimeter with string = ") {
-            auto result = calc.Add("12\n12,12");
+        WHEN("Call function Add with single delimeter with string = //$$$/n44$$$44") {
+            auto result = calc.Add("//$$$\n44$$$44");
         
             THEN("Add numbers") {
-                REQUIRE(result == 36);
+                REQUIRE(result == 88);
             }
         }
 
-        WHEN("Call function Add with single delimeter with string = ") {
-            auto result = calc.Add("10000,22");
+        WHEN("Call function Add with single delimeter with string = //&\n555551&433223333&1") {
+            auto result = calc.Add("//&\n555551&433223333&1");
         
             THEN("Add numbers") {
-                REQUIRE(result == 22);
+                REQUIRE(result == 1);
             }
         }
         
